@@ -15,11 +15,13 @@ namespace HatsTower.Scripts
         [SerializeField] private Transform ListItemsContent;
         [SerializeField] private GameObject HealthPointPF;
         [SerializeField] private Button startButton;
+        [SerializeField] private Slider slider;
 
         [SerializeField] private GameObject MessageObject;
         private TextMeshProUGUI text;
         private int startHP;
         private Sequence Seq;
+        private float maxCount;
         void Start()
         {
             startButton.onClick.AddListener(() =>
@@ -45,6 +47,8 @@ namespace HatsTower.Scripts
                 HPList.Add(obj);
             }
 
+            maxCount = ModelsHandler.Instance.Hats.Count;
+            ModelsHandler.Instance.OnHatsChangedEvent += (count) => slider.value = count/maxCount;
             ModelsHandler.Instance.OnHPChangedEvent += HPChanged;
             ModelsHandler.Instance.OnFastMessageSpawnEvent += SpawnFastMessage;
         }

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace HatsTower.Scripts
 {
+    [DefaultExecutionOrder(-10)]
     public class HatsCollection : MonoBehaviour
     {
         [SerializeField] private Hat hatPF;

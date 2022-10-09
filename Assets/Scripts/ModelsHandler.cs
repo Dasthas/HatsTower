@@ -9,7 +9,18 @@ namespace HatsTower.Scripts
     {
         public static ModelsHandler Instance;
 
-        public List<Hat> Hats { get; set; } = new();
+        private List<Hat> hats;
+        public List<Hat> Hats
+        {
+            get { return hats; }
+            set
+            {
+                OnHatsChangedEvent.Invoke(value.Count);
+                hats = value;
+            }
+        }
+        public delegate void OnHatsChanged(int count);
+        public event OnHatsChanged OnHatsChangedEvent;
 
         private int hp;
         public int HP
@@ -49,6 +60,7 @@ namespace HatsTower.Scripts
 
         private void Awake()
         {
+            hats = new();
             OnHPChangedEvent += (hp) => Debug.Log("OnHPChangedEvent " + hp);
             OnTopTowerPosChangedEvent += (topTowerPos) => Debug.Log("OnTopTowerPosChangedEvent");
             OnFastMessageSpawnEvent += Debug.Log;

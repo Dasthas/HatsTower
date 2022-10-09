@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace HatsTower.Scripts
 {
+    [DefaultExecutionOrder(-99)]
     public class CameraControl : MonoBehaviour
     {
         [SerializeField] private Camera cam;
