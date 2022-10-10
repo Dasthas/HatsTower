@@ -100,7 +100,7 @@ namespace HatsTower.Scripts
             SeqNull.SetEase(ease)
                       .Join(t.DOMoveX(t.position.x + flyX, timeFlyX / 4))
                       .Join(t.DOMoveY(t.position.y + 1, timeFlyX / 4))
-                      .Join(t.DORotate(new Vector3(0, 0, 360), timeFlyX / 4, RotateMode.FastBeyond360))
+                      .Join(t.DORotate(new Vector3(0, 0, 180), timeFlyX / 4, RotateMode.FastBeyond360))
                       .Append(t.DOMoveY(t.position.y - (flyY * 3), timeFlyY))
                       .Join(t.DORotate(new Vector3(0, 0, 360), timeFlyX / 2, RotateMode.FastBeyond360))
                       .Join(t.DOMoveX(t.position.x + (flyX * 3), timeFlyX))
